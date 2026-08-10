@@ -10,12 +10,14 @@ const CATALOG_EMBED_URL =
 const WHATSAPP_URL =
   "https://wa.me/59176697191?text=Hola%2C%20revis%C3%A9%20el%20Cat%C3%A1logo%20BibeToys%202026%20y%20quiero%20recibir%20informaci%C3%B3n%20sobre%20la%20importaci%C3%B3n%20grupal.";
 const ORDER_FORM_URL = "https://forms.gle/rVAusbXiD8r5QzPh8";
+const CATALOG_DOWNLOAD_URL =
+  "https://drive.google.com/uc?export=download&id=1jKAM3ReReV38eyDgVaDxZmI83t6JpyGh";
 
 const faqs = [
   {
     question: "¿Cómo registro mi pedido?",
     answer:
-      "Copia del buscador los códigos y nombres de los productos que te interesan. Luego abre el formulario oficial, completa tus datos, indica la cantidad de cajas y envía el registro. El formulario es el único canal para registrar pedidos.",
+      "Selecciona los productos, registra tu pedido en el formulario oficial, adelanta el 70% e ingresa al Grupo de seguimiento. El formulario es el único canal para registrar pedidos.",
   },
   {
     question: "¿Cuál es el pedido mínimo?",
@@ -209,7 +211,7 @@ export default function Home() {
       <section id="catalogo" className="section catalog-section" ref={catalogRef}>
         <div className="catalog-copy scroll-reveal" data-reveal>
           <p className="eyebrow dark">Catálogo completo en alta calidad</p>
-          <h2>Explora la colección página por página.</h2>
+          <h2>Explora el catálogo página por página.</h2>
           <p>
             Revisa cada producto, código, precio por caja y detalle directamente en el visor.
           </p>
@@ -228,18 +230,27 @@ export default function Home() {
             allowFullScreen
           />
         </div>
-        <a className="open-catalog" href={CATALOG_EMBED_URL.replace("?embed", "")} target="_blank" rel="noreferrer">
-          Abrir catálogo en pantalla completa
-        </a>
+        <div className="catalog-actions scroll-reveal" data-reveal>
+          <a className="catalog-button catalog-button-secondary" href={CATALOG_EMBED_URL.replace("?embed", "")} target="_blank" rel="noreferrer">
+            Abrir catálogo en pantalla completa
+          </a>
+          <a className="catalog-button catalog-button-download" href={CATALOG_DOWNLOAD_URL} target="_blank" rel="noreferrer">
+            Descargar catálogo PDF
+            <small>Archivo original · 150 MB</small>
+          </a>
+          <a className="catalog-button catalog-button-order" href={ORDER_FORM_URL} target="_blank" rel="noreferrer">
+            Registrar pedido
+          </a>
+        </div>
+        <p className="download-note">La descarga puede tardar según tu conexión. El archivo conserva su calidad original.</p>
       </section>
 
       <section id="buscar" className="section search-section">
         <div className="section-heading scroll-reveal" data-reveal>
-          <p className="eyebrow dark">Buscador inteligente</p>
-          <h2>Busca como lo dirías normalmente.</h2>
-          <p>
-            Reconoce tildes, palabras relacionadas, errores comunes como “roboy” y códigos con o sin guiones.
-          </p>
+          <div className="search-title">
+            <span className="search-symbol" aria-hidden="true" />
+            <h2>Buscador inteligente</h2>
+          </div>
         </div>
 
         <div className="search-panel scroll-reveal delay-one" data-reveal>
@@ -360,15 +371,15 @@ export default function Home() {
       <section id="pedido" className="order-strip scroll-reveal" data-reveal>
         <div className="order-copy">
           <p className="eyebrow">Pedido oficial</p>
-          <h2>Ya tienes tus códigos. Ahora registra tu pedido.</h2>
+          <h2>Del catálogo al seguimiento en cuatro pasos.</h2>
           <p>
-            El formulario centraliza todos los pedidos para evitar confusiones y retrasos. Revisa tus códigos,
-            indica el número de cajas y acepta las condiciones antes de enviar.
+            Selecciona, registra tu pedido, adelanta el 70% e ingresa al Grupo de seguimiento.
           </p>
           <ol className="order-steps" aria-label="Pasos para registrar el pedido">
-            <li><span>1</span>Copia tus códigos</li>
-            <li><span>2</span>Completa el formulario</li>
-            <li><span>3</span>Envía tu registro</li>
+            <li><span>1</span>Selecciona</li>
+            <li><span>2</span>Registra tu pedido</li>
+            <li><span>3</span>Adelanta el 70%</li>
+            <li><span>4</span>Ingresa al Grupo de seguimiento</li>
           </ol>
         </div>
         <div className="order-action">
@@ -385,7 +396,20 @@ export default function Home() {
           <Image src="/bibetoys-logo.png" alt="BibeToys" width={54} height={54} unoptimized />
           <div><strong>BibeToys</strong><span>Respaldado por INTRAPROD</span></div>
         </div>
-        <p>Importación grupal · Precios puestos en Cochabamba · 2026</p>
+        <div className="footer-meta">
+          <p>Importación grupal · Precios puestos en Cochabamba · 2026</p>
+          <div className="agency-credit" aria-label="Estrategia, diseño y desarrollo web por Scale Sales Lab">
+            <span>Estrategia, diseño y desarrollo web por</span>
+            <Image
+              src="/scale-sales-lab-logo.png"
+              alt="Scale Sales Lab"
+              width={38}
+              height={38}
+              unoptimized
+            />
+            <strong>Scale Sales Lab</strong>
+          </div>
+        </div>
       </footer>
 
       <div className={`copy-toast ${copiedId ? "show" : ""}`} role="status" aria-live="polite">
